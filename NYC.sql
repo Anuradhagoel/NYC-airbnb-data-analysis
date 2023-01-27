@@ -72,6 +72,13 @@ FROM listings
 GROUP BY room_type, neighbourhood_group_cleansed
 ORDER BY neighbourhood_group_cleansed, room_type
 
+--Number of reviews and average review ratings
+SELECT neighbourhood_group_cleansed, SUM(number_of_reviews) as total_reviews, ROUND (AVG (price),2) as avg_price 
+FROM listings
+GROUP BY neighbourhood_group_cleansed
+ORDER BY total_reviews DESC;
+
+
 -- Availability throughout the year:
 
 SELECT DISTINCT neighbourhood_group_cleansed as neighbourhood_group, ROUND (AVG (availability_365),0) AS availability
